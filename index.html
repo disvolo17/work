@@ -88,6 +88,50 @@
     word-break: break-word;
     overflow-wrap: break-word;
 }
+
+    /* ===== CONTACTS FINAL FIX ===== */
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* планшеты */
+@media (max-width: 900px) {
+    .contacts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* телефоны */
+@media (max-width: 600px) {
+    .contacts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.contact-item {
+    width: 100%;
+    min-width: 0;
+}
+
+.contact-text {
+    overflow: hidden;
+}
+
+.contact-text strong {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.contact-text,
+.contact-text a {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
     <style>
         /* ===== FIX ЧТОБЫ НЕ ЕХАЛО ===== */
     
@@ -610,7 +654,6 @@ div, span {
 
         .contacts-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
             gap: 15px;
             margin-top: 30px;
         }
