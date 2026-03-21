@@ -19,13 +19,12 @@
             --border: #1e3a5f;
         }
 
-        /* Глобальное исправление вылетов за края */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
         html, body { 
             width: 100%; 
             max-width: 100vw; 
-            overflow-x: hidden; /* Запрещает горизонтальный скролл */
+            overflow-x: hidden; 
             background: var(--primary); 
             font-family: 'Inter', sans-serif; 
             color: var(--text-primary);
@@ -35,90 +34,94 @@
         /* HEADER */
         .main-header {
             background: var(--secondary);
-            padding: 60px 20px;
+            padding: 50px 20px;
             text-align: center;
             border-bottom: 1px solid var(--border);
         }
         .profile-photo-container { 
-            width: 130px; height: 130px; 
+            width: 120px; height: 120px; 
             border-radius: 50%; overflow: hidden; 
             border: 3px solid var(--accent); 
             margin: 0 auto 20px;
             box-shadow: 0 0 20px var(--accent-glow);
         }
         .profile-photo { width: 100%; height: 100%; object-fit: cover; }
-        .name { font-family: 'Playfair Display', serif; font-size: clamp(28px, 8vw, 42px); font-weight: 900; margin-bottom: 10px; }
-        .title { font-size: 14px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 4px; }
+        .name { font-family: 'Playfair Display', serif; font-size: clamp(26px, 7vw, 38px); font-weight: 900; margin-bottom: 5px; }
+        .title { font-size: 13px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 3px; }
 
-        /* CONTENT CONTAINER */
         .main-container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        /* MARQUEE - Исправленный блок */
+        /* ARTISTS SECTION */
+        .worked-with {
+            text-align: center;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--text-secondary);
+            margin-bottom: -10px;
+            margin-top: 20px;
+        }
         .marquee { 
             width: 100%; 
-            max-width: 100%; /* Жесткое ограничение */
             overflow: hidden; 
             white-space: nowrap; 
             background: rgba(255, 255, 255, 0.02); 
-            padding: 50px 0; 
+            padding: 55px 0; 
             margin: 20px 0; 
             border-radius: 15px;
             border: 1px solid var(--border);
         }
-        .marquee-content { 
-            display: inline-block; 
-            animation: scroll 25s linear infinite; 
-        }
+        .marquee-content { display: inline-block; animation: scroll 30s linear infinite; }
         .artist-tag { 
             display: inline-block; 
-            font-size: 26px; 
+            font-size: 24px; 
             font-weight: 900; 
             margin: 0 25px; 
             text-transform: uppercase; 
-            transform: scaleY(3.5); /* Ваше вертикальное растяжение */
+            transform: scaleY(3.5); 
             opacity: 0.8; 
         }
         @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         /* SECTIONS */
-        .section-header { display: flex; align-items: center; gap: 15px; margin: 40px 0 20px; width: 100%; }
-        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 24px; white-space: nowrap; }
+        .section-header { display: flex; align-items: center; gap: 15px; margin: 45px 0 25px; width: 100%; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 22px; white-space: nowrap; }
         .section-line { flex-grow: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
 
-        /* EXPERIENCE */
+        /* TIMELINE (Experience, Edu, Army) */
         .timeline { border-left: 2px solid var(--border); padding-left: 20px; margin-left: 10px; }
         .timeline-item { position: relative; margin-bottom: 30px; }
         .timeline-item::before { content: ''; position: absolute; left: -27px; top: 8px; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; border: 2px solid var(--primary); }
-        .company-name { font-size: 20px; font-weight: 800; }
-        .date-badge { font-size: 11px; color: var(--accent); font-weight: 700; margin-bottom: 5px; display: block; }
-        .timeline-content { font-size: 14px; color: var(--text-secondary); margin-top: 8px; padding-left: 15px; }
+        .company-name { font-size: 19px; font-weight: 800; }
+        .date-badge { font-size: 10px; color: var(--accent); font-weight: 800; margin-bottom: 4px; display: block; text-transform: uppercase; }
+        .timeline-content { font-size: 13px; color: var(--text-secondary); margin-top: 5px; list-style: none; }
+        .timeline-content li { position: relative; padding-left: 15px; margin-bottom: 4px; }
+        .timeline-content li::before { content: "•"; position: absolute; left: 0; color: var(--accent); }
 
-        /* CONTACTS - 3 в колонку */
-        .contacts-grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); /* На ПК по 2 в ряд (итого 3 уровня) */
-            gap: 15px; 
-            margin-top: 20px;
-        }
-        .contact-item { 
-            display: flex; align-items: center; gap: 12px; 
-            padding: 15px; background: var(--secondary); 
-            border: 1px solid var(--border); border-radius: 10px; 
-        }
-        .contact-icon { width: 35px; height: 35px; background: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .contact-text strong { font-size: 12px; display: block; }
-        .contact-text span { font-size: 11px; color: var(--text-secondary); }
+        /* SKILLS GRID */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        .skill-card { padding: 15px; background: var(--secondary); border: 1px solid var(--border); border-radius: 12px; }
+        .skill-card strong { display: block; color: var(--accent); font-size: 13px; text-transform: uppercase; margin-bottom: 5px; }
+        .skill-card p { font-size: 12px; color: var(--text-secondary); }
 
-        /* MEDIA QUERIES */
+        /* TAGS */
+        .tag-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag { padding: 8px 14px; background: var(--secondary); border: 1px solid var(--border); border-radius: 6px; font-size: 11px; font-weight: 600; }
+
+        /* CONTACTS */
+        .contacts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .contact-item { display: flex; align-items: center; gap: 12px; padding: 15px; background: var(--secondary); border: 1px solid var(--border); border-radius: 12px; text-decoration: none; color: inherit; }
+        .contact-icon { width: 35px; height: 35px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        
         @media (max-width: 768px) {
-            .contacts-grid { grid-template-columns: 1fr; } /* На телефоне в одну колонку */
-            .main-container { padding: 15px; }
-            .section-header h2 { font-size: 20px; }
+            .contacts-grid { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -134,18 +137,31 @@
 
     <div class="main-container">
         
+        <div class="worked-with">Работал с</div>
         <div class="marquee">
             <div class="marquee-content">
                 <span class="artist-tag">БАСТА</span><span class="artist-tag">ЗВЕРИ</span>
                 <span class="artist-tag">MACAN</span><span class="artist-tag">ЕГОР КРИД</span>
                 <span class="artist-tag">ПОЛИНА ГАГАРИНА</span><span class="artist-tag">SALUKI</span>
                 <span class="artist-tag">AKMAL'</span><span class="artist-tag">три дня дождя</span>
+                <span class="artist-tag">JAKONE & AVG</span><span class="artist-tag">ПАПИН ОЛИМПОС</span>
                 <span class="artist-tag">БАСТА</span><span class="artist-tag">ЗВЕРИ</span>
                 <span class="artist-tag">MACAN</span><span class="artist-tag">ЕГОР КРИД</span>
                 <span class="artist-tag">ПОЛИНА ГАГАРИНА</span><span class="artist-tag">SALUKI</span>
                 <span class="artist-tag">AKMAL'</span><span class="artist-tag">три дня дождя</span>
+                <span class="artist-tag">JAKONE & AVG</span><span class="artist-tag">ПАПИН ОЛИМПОС</span>
             </div>
         </div>
+
+        <section>
+            <div class="section-header"><h2>Ключевые навыки</h2><div class="section-line"></div></div>
+            <div class="skills-grid">
+                <div class="skill-card"><strong>Планирование</strong><p>Разбивка сложных проектов на этапы и жесткий контроль дедлайнов.</p></div>
+                <div class="skill-card"><strong>Коммуникация</strong><p>Синхронизация команды, подрядчиков и заказчика. 80% моей работы — это общение.</p></div>
+                <div class="skill-card"><strong>Управление рисками</strong><p>Вижу «узкие места» заранее и всегда имею рабочий план Б.</p></div>
+                <div class="skill-card"><strong>Логистика туров</strong><p>Организация маршрутов, перелетов и проживания для больших команд.</p></div>
+            </div>
+        </section>
 
         <section>
             <div class="section-header"><h2>Опыт работы</h2><div class="section-line"></div></div>
@@ -153,48 +169,63 @@
                 <div class="timeline-item">
                     <span class="date-badge">2024 — 2025</span>
                     <div class="company-name">SOLDOUT</div>
+                    <div style="font-size: 13px; color: var(--accent); font-weight: 600;">Project Manager</div>
                     <ul class="timeline-content">
                         <li>Управление гастрольными турами в 36+ городах.</li>
-                        <li>Логистика, бюджетирование и контроль площадок.</li>
+                        <li>Логистика, бюджетирование и контроль тех. групп на площадках.</li>
                     </ul>
                 </div>
                 <div class="timeline-item">
                     <span class="date-badge">2023 — 2024</span>
                     <div class="company-name">NEBO RECORDS</div>
+                    <div style="font-size: 13px; color: var(--accent); font-weight: 600;">Project Manager</div>
                     <ul class="timeline-content">
-                        <li>Координация выступлений артистов лейбла на федеральных площадках.</li>
+                        <li>Организация гастролей и координация выступлений артистов лейбла.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <section>
+            <div class="section-header"><h2>Образование и Служба</h2><div class="section-line"></div></div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="date-badge">2017 — 2021</span>
+                    <div class="company-name">РЭУ им. Г.В. Плеханова</div>
+                    <p style="font-size: 13px; color: var(--text-secondary);">Бакалавриат • Гостиничное дело</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="date-badge">2006 — 2017</span>
+                    <div class="company-name">Гимназия №4</div>
+                    <p style="font-size: 13px; color: var(--accent);">Экономический класс</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="date-badge">2021 — 2022</span>
+                    <div class="company-name">Военная служба</div>
+                    <div style="background: gold; color: #000; padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 900; display: inline-block; margin-top: 5px;">🎖 МЕДАЛЬ ЗА ПАРАД ПОБЕДЫ 2022</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header"><h2>Навыки</h2><div class="section-line"></div></div>
+            <div class="tag-grid">
+                <div class="tag">Bitrix24</div><div class="tag">Trello / Notion</div>
+                <div class="tag">MS Office Full</div><div class="tag">ChatGPT / Gemini AI</div>
+                <div class="tag">HTML/CSS</div><div class="tag">TG Bot API</div>
+                <div class="tag">Canva / Figma</div><div class="tag">API Integration</div>
+            </div>
+        </section>
+
+        <section>
             <div class="section-header"><h2>Контакты</h2><div class="section-line"></div></div>
             <div class="contacts-grid">
-                <a href="tel:+79999753423" class="contact-item">
-                    <div class="contact-icon">📞</div>
-                    <div class="contact-text"><strong>Телефон</strong><span>+7 (999) 975-34-23</span></div>
-                </a>
-                <a href="https://t.me/disvolo" class="contact-item">
-                    <div class="contact-icon">✈️</div>
-                    <div class="contact-text"><strong>Telegram</strong><span>@disvolo</span></div>
-                </a>
-                <a href="https://max.ru/u/f9LHodD0cOJlJzwcUFodXStn9kFjvAxWFXmTY2ACRIRWC0fUkYCLgR96o_g" class="contact-item">
-                    <div class="contact-icon">📍</div>
-                    <div class="contact-text"><strong>Max</strong><span>Профиль Max</span></div>
-                </a>
-                <a href="mailto:disvolo@bk.ru" class="contact-item">
-                    <div class="contact-icon">✉️</div>
-                    <div class="contact-text"><strong>Email</strong><span>disvolo@bk.ru</span></div>
-                </a>
-                <a href="https://vk.com/disvolo" class="contact-item">
-                    <div class="contact-icon">VK</div>
-                    <div class="contact-text"><strong>ВКонтакте</strong><span>vk.com/disvolo</span></div>
-                </a>
-                <a href="https://instagram.com/disvolo" class="contact-item">
-                    <div class="contact-icon">📷</div>
-                    <div class="contact-text"><strong>Insta</strong><span>@disvolo</span></div>
-                </a>
+                <a href="tel:+79999753423" class="contact-item"><div class="contact-icon">📞</div><div class="contact-text"><strong>Телефон</strong><span>+7 (999) 975-34-23</span></div></a>
+                <a href="https://t.me/disvolo" class="contact-item"><div class="contact-icon">✈️</div><div class="contact-text"><strong>Telegram</strong><span>@disvolo</span></div></a>
+                <a href="https://max.ru/u/f9LHodD0cOJlJzwcUFodXStn9kFjvAxWFXmTY2ACRIRWC0fUkYCLgR96o_g" class="contact-item"><div class="contact-icon">📍</div><div class="contact-text"><strong>Max</strong><span>Профиль Max</span></div></a>
+                <a href="mailto:disvolo@bk.ru" class="contact-item"><div class="contact-icon">✉️</div><div class="contact-text"><strong>Email</strong><span>disvolo@bk.ru</span></div></a>
+                <a href="https://vk.com/disvolo" class="contact-item"><div class="contact-icon">VK</div><div class="contact-text"><strong>ВКонтакте</strong><span>vk.com/disvolo</span></div></a>
+                <a href="https://instagram.com/disvolo" class="contact-item"><div class="contact-icon">📷</div><div class="contact-text"><strong>Insta</strong><span>@disvolo</span></div></a>
             </div>
         </section>
     </div>
