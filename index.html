@@ -90,13 +90,16 @@
         .name { font-family: 'Syne', sans-serif; font-size: clamp(32px, 8vw, 64px); font-weight: 800; text-transform: uppercase; }
         .title { font-size: 14px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 5px; }
 
-        .main-container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+        .main-container { max-width: 1000px; margin: 0 auto; padding: 0 20px 60px; }
 
-        /* ИЗМЕНЕНО: Позиционирование ровно посередине */
-        .worked-with-container {
-            text-align: center;
-            margin: 40px 0; /* Равные отступы сверху и снизу */
+        /* ИСПРАВЛЕНО: Контейнер для точного центрирования текста */
+        .worked-with-section {
+            height: 120px; /* Фиксированная высота для центрирования внутри */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
         .worked-with-label {
             font-family: 'Syne', sans-serif;
             font-size: 11px;
@@ -140,7 +143,7 @@
             .sidebar { width: 50px; }
             .content-wrapper { margin-left: 50px; width: calc(100% - 50px); }
             .hero-glass-bento { padding: 20px 30px; margin-bottom: 20px; }
-            .worked-with-container { margin: 20px 0; }
+            .worked-with-section { height: 80px; }
         }
     </style>
 </head>
@@ -165,7 +168,7 @@
         </header>
 
         <div class="main-container">
-            <div class="worked-with-container">
+            <div class="worked-with-section">
                 <div class="worked-with-label">Работал с</div>
             </div>
 
