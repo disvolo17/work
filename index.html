@@ -31,23 +31,22 @@
             line-height: 1.4;
         }
 
-        /* HEADER */
+        /* HEADER - CLEAN BENTO PHOTO */
         .main-header {
             background: var(--secondary);
-            padding: 70px 20px 50px;
+            padding: 80px 20px 60px;
             text-align: center;
             border-bottom: 2px solid var(--accent);
         }
         .profile-photo-container { 
-            width: 140px; height: 140px; 
-            border-radius: 35px; 
+            width: 160px; height: 160px; 
+            border-radius: 20px; /* Modern Bento скругление */
             overflow: hidden; 
-            border: 4px solid var(--accent); 
-            margin: 0 auto 25px;
-            transform: rotate(-3deg);
-            box-shadow: 10px 10px 0px var(--accent-glow);
+            border: 2px solid var(--border); /* Минималистичная рамка */
+            margin: 0 auto 30px;
+            /* Убрали тень и наклон */
         }
-        .profile-photo { width: 100%; height: 100%; object-fit: cover; transform: rotate(3deg) scale(1.1); }
+        .profile-photo { width: 100%; height: 100%; object-fit: cover; }
         
         .name { 
             font-family: 'Syne', sans-serif; 
@@ -121,7 +120,7 @@
         .section-header h2 { font-family: 'Syne', sans-serif; font-size: 26px; text-transform: uppercase; }
         .section-line { flex-grow: 1; height: 3px; background: var(--accent); }
 
-        /* SKILLS GRID - ALL 9 RETURNED */
+        /* SKILLS GRID */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
         .skill-card { 
             padding: 20px; 
@@ -142,7 +141,7 @@
         .timeline-content li { margin-bottom: 4px; position: relative; padding-left: 15px; }
         .timeline-content li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
 
-        /* CONTACTS - ALL 6 RETURNED */
+        /* CONTACTS */
         .contacts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
         .contact-item { 
             display: flex; align-items: center; gap: 15px; 
@@ -163,7 +162,7 @@
 
     <header class="main-header">
         <div class="profile-photo-container">
-            <img src="312.jpg" alt="Денис Волошин" class="profile-photo">
+            <img src="321.png" alt="Денис Волошин" class="profile-photo">
         </div>
         <h1 class="name">Денис Волошин</h1>
         <div class="title">Project Manager</div>
