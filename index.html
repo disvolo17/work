@@ -83,34 +83,25 @@
             margin: 40px 0 20px;
         }
 
-        /* КАРУСЕЛЬ - ЭФФЕКТ ЖИДКОГО СТЕКЛА */
+        /* КАРУСЕЛЬ - ЛИНЕЙНАЯ И БЫСТРАЯ */
         .marquee { 
             width: 100%; 
             overflow: hidden; 
             margin-bottom: 40px; 
-            border-radius: 20px;
-            
-            /* CSS ЭФФЕКТ СТЕКЛА (Bento/Morphism) */
-            background: rgba(255, 255, 255, 0.03); /* Очень прозрачный белый */
-            backdrop-filter: blur(15px); /* Сильное размытие фона ПОД панелью */
-            -webkit-backdrop-filter: blur(15px); /* Для Safari */
-            
-            border: 1px solid rgba(255, 255, 255, 0.08); /* Тонкая граница */
-            padding: 30px 0; 
-            
-            /* Эффект свечения */
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); 
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            padding: 20px 0; 
             position: relative;
-            z-index: 5;
         }
         .marquee-content { 
             display: inline-block; 
-            animation: scroll 18s linear infinite; /* Ускорили, но плавнее */
-            position: relative;
-            z-index: 6;
+            white-space: nowrap;
+            animation: scroll 12s linear infinite; /* 12 секунд - высокая скорость */
         }
         
-        /* ПАУЗА ПРИ НАВЕДЕНИИ */
         .marquee:hover .marquee-content {
             animation-play-state: paused;
         }
@@ -118,34 +109,26 @@
         .artist-tag { 
             display: inline-block; 
             font-family: 'Syne', sans-serif;
-            font-size: 18px; 
+            font-size: 20px; 
             font-weight: 800; 
-            margin: 0 30px; 
+            margin: 0 40px; 
             text-transform: uppercase; 
-            
-            /* Цвет артиста "проходит" через стекло */
-            color: rgba(255, 77, 38, 0.6); 
-            letter-spacing: 1.5px;
-            transition: 0.3s;
+            color: #fff;
+            letter-spacing: 1px;
+            opacity: 0.9;
         }
         
-        .artist-tag:hover {
-            color: var(--accent);
-            transform: scale(1.1);
+        @keyframes scroll { 
+            from { transform: translateX(0); } 
+            to { transform: translateX(-50%); } 
         }
-        
-        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         /* SECTIONS */
         .section-header { display: flex; align-items: center; gap: 20px; margin: 50px 0 25px; }
-        .section-header h2 { 
-            font-family: 'Syne', sans-serif; 
-            font-size: 24px; 
-            text-transform: uppercase; 
-        }
+        .section-header h2 { font-family: 'Syne', sans-serif; font-size: 24px; text-transform: uppercase; }
         .section-line { flex-grow: 1; height: 3px; background: var(--accent); }
 
-        /* SKILLS GRID - ВСЕ 9 */
+        /* SKILLS GRID */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
         .skill-card { 
             padding: 20px; 
@@ -156,17 +139,15 @@
         .skill-card strong { display: block; color: #fff; font-family: 'Syne', sans-serif; font-size: 13px; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 1px; }
         .skill-card p { font-size: 12px; color: var(--text-secondary); }
 
-        /* TIMELINE */
+        /* TIMELINE (Experience, Edu, Army) */
         .timeline { border-left: 2px solid var(--border); padding-left: 25px; }
         .timeline-item { position: relative; margin-bottom: 35px; }
         .timeline-item::before { content: ''; position: absolute; left: -31px; top: 6px; width: 10px; height: 10px; background: var(--accent); transform: rotate(45deg); }
         .company-name { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; }
         .date-badge { font-size: 10px; color: var(--accent); font-weight: 800; text-transform: uppercase; margin-bottom: 4px; display: block; }
-        .timeline-content { font-size: 13px; color: var(--text-secondary); margin-top: 8px; list-style: none; }
-        .timeline-content li { margin-bottom: 5px; position: relative; padding-left: 15px; }
-        .timeline-content li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+        .timeline-content { font-size: 13px; color: var(--text-secondary); list-style: none; margin-top: 5px; }
 
-        /* CONTACTS - ВСЕ 6 */
+        /* CONTACTS */
         .contacts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
         .contact-item { 
             display: flex; align-items: center; gap: 15px; 
@@ -174,7 +155,6 @@
             border: 1px solid var(--border); border-radius: 12px; 
             text-decoration: none; 
         }
-        .contact-icon { font-size: 20px; flex-shrink: 0; }
         .contact-text strong { font-family: 'Syne', sans-serif; font-size: 10px; display: block; text-transform: uppercase; color: var(--accent); letter-spacing: 1.5px; margin-bottom: 2px; }
         .contact-text span { font-size: 14px; color: #fff; font-weight: 600; }
         
@@ -234,17 +214,12 @@
                 <div class="timeline-item">
                     <span class="date-badge">2024 — 2025</span>
                     <div class="company-name">SOLDOUT</div>
-                    <ul class="timeline-content">
-                        <li>Управление турами в 36+ городах.</li>
-                        <li>Логистика, бюджетирование, тех. контроль на площадках.</li>
-                    </ul>
+                    <ul class="timeline-content"><li>Управление турами в 36+ городах. Логистика, бюджеты, тех. контроль.</li></ul>
                 </div>
                 <div class="timeline-item">
                     <span class="date-badge">2023 — 2024</span>
                     <div class="company-name">NEBO RECORDS</div>
-                    <ul class="timeline-content">
-                        <li>Гастроли и координация выступлений артистов лейбла.</li>
-                    </ul>
+                    <ul class="timeline-content"><li>Гастроли и координация выступлений артистов лейбла.</li></ul>
                 </div>
             </div>
         </section>
@@ -268,12 +243,12 @@
         <section>
             <div class="section-header"><h2>Контакты</h2><div class="section-line"></div></div>
             <div class="contacts-grid">
-                <a href="tel:+79999753423" class="contact-item"><div class="contact-icon">📞</div><div class="contact-text"><strong>Телефон</strong><span>+7 (999) 975-34-23</span></div></a>
-                <a href="https://t.me/disvolo" class="contact-item"><div class="contact-icon">✈️</div><div class="contact-text"><strong>Telegram</strong><span>@disvolo</span></div></a>
-                <a href="https://max.ru/u/f9LHodD0cOJlJzwcUFodXStn9kFjvAxWFXmTY2ACRIRWC0fUkYCLgR96o_g" class="contact-item"><div class="contact-icon">📍</div><div class="contact-text"><strong>Max</strong><span>Открыть профиль</span></div></a>
-                <a href="mailto:disvolo@bk.ru" class="contact-item"><div class="contact-icon">✉️</div><div class="contact-text"><strong>Email</strong><span>disvolo@bk.ru</span></div></a>
-                <a href="https://vk.com/disvolo" class="contact-item"><div class="contact-icon">🌐</div><div class="contact-text"><strong>ВКонтакте</strong><span>vk.com/disvolo</span></div></a>
-                <a href="https://instagram.com/disvolo" class="contact-item"><div class="contact-icon">📷</div><div class="contact-text"><strong>Instagram</strong><span>@disvolo</span></div></a>
+                <a href="tel:+79999753423" class="contact-item"><div class="contact-text"><strong>Телефон</strong><span>+7 (999) 975-34-23</span></div></a>
+                <a href="https://t.me/disvolo" class="contact-item"><div class="contact-text"><strong>Telegram</strong><span>@disvolo</span></div></a>
+                <a href="https://max.ru/u/f9LHodD0cOJlJzwcUFodXStn9kFjvAxWFXmTY2ACRIRWC0fUkYCLgR96o_g" class="contact-item"><div class="contact-text"><strong>Max</strong><span>Открыть профиль</span></div></a>
+                <a href="mailto:disvolo@bk.ru" class="contact-item"><div class="contact-text"><strong>Email</strong><span>disvolo@bk.ru</span></div></a>
+                <a href="https://vk.com/disvolo" class="contact-item"><div class="contact-text"><strong>ВКонтакте</strong><span>vk.com/disvolo</span></div></a>
+                <a href="https://instagram.com/disvolo" class="contact-item"><div class="contact-text"><strong>Instagram</strong><span>@disvolo</span></div></a>
             </div>
         </section>
     </div>
