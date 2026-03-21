@@ -6,6 +6,7 @@
     <title>Денис Волошин — Project Manager</title>
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📍</text></svg>">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 
     <style>
@@ -24,194 +25,308 @@
         html, body { width: 100%; overflow-x: hidden; background: var(--primary); }
         body { font-family: 'Inter', sans-serif; color: var(--text-primary); line-height: 1.5; }
 
-        /* GRID SYSTEM */
-        .container { 
-            display: grid; 
-            grid-template-columns: 350px 1fr; 
-            min-height: 100vh; 
-            width: 100%;
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+        /* HEADER - NEW CENTERED LAYOUT */
+        .main-header {
+            background: var(--secondary);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* SIDEBAR */
-        .sidebar { 
-            background: var(--secondary); 
-            padding: 40px 25px; 
-            border-right: 1px solid var(--border); 
-            position: relative; 
-            z-index: 10;
+        .main-header::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 60%);
+            animation: pulseHeader 10s ease-in-out infinite;
+            opacity: 0.5;
         }
 
-        .profile-photo-container { width: 100px; height: 100px; border-radius: 50%; overflow: hidden; border: 3px solid var(--accent); margin-bottom: 20px; }
+        @keyframes pulseHeader { 0%, 100% { transform: scale(1); opacity: 0.3; } 50% { transform: scale(1.1); opacity: 0.6; } }
+
+        .header-content { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; }
+
+        .profile-photo-container { 
+            width: 150px; height: 150px; 
+            border-radius: 50%; overflow: hidden; 
+            border: 4px solid var(--accent); 
+            box-shadow: 0 0 30px var(--accent-glow); 
+            margin-bottom: 25px;
+            background: var(--primary);
+        }
         .profile-photo { width: 100%; height: 100%; object-fit: cover; }
         
-        .name { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; line-height: 1.1; margin-bottom: 5px; }
-        .title { font-size: 13px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
+        .name { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 900; line-height: 1.1; margin-bottom: 10px; background: linear-gradient(135deg, #fff 0%, #8a9bb8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title { font-size: 16px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 4px; }
 
-        .skills-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; }
-        .skill-item { padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; }
-        .skill-name { font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; }
-        .skill-desc { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
+        /* MAIN CONTENT AREA */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
 
-        /* MAIN CONTENT */
-        .main-content { padding: 40px; background: var(--primary); width: 100%; }
-        .section-header { display: flex; align-items: center; gap: 15px; margin: 30px 0 20px; }
-        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 24px; }
-        .section-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
-
-        /* MARQUEE (ARTISTS) - VERTICAL STRETCH X3 */
-        .marquee { width: 100%; overflow: hidden; white-space: nowrap; background: rgba(255, 255, 255, 0.02); padding: 60px 0; margin: 20px 0; border-radius: 15px; }
-        .marquee-content { display: inline-block; animation: scroll 25s linear infinite; }
+        /* MARQUEE (ARTISTS) - AT TOP */
+        .marquee { 
+            width: 100%; overflow: hidden; white-space: nowrap; 
+            background: rgba(255, 255, 255, 0.02); 
+            padding: 80px 0; 
+            border-radius: 20px; 
+            border: 1px solid var(--border);
+            position: relative;
+        }
+        .marquee-content { display: inline-block; animation: scrollArtists 30s linear infinite; }
         .artist-tag { 
             display: inline-block; 
-            font-size: 28px; 
+            font-size: 32px; 
             font-weight: 900; 
             color: #fff; 
-            margin: 0 25px; 
+            margin: 0 30px; 
             text-transform: uppercase; 
-            /* Растяжение в 3.5 раза для эффекта */
+            letter-spacing: 2px;
             transform: scaleY(3.5); 
             transform-origin: center; 
-            opacity: 0.8; 
+            opacity: 0.7; 
         }
-        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @keyframes scrollArtists { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-        /* TIMELINE */
-        .timeline { border-left: 2px solid var(--border); padding-left: 20px; margin-left: 10px; }
-        .timeline-item { position: relative; margin-bottom: 25px; }
-        .timeline-item::before { content: ''; position: absolute; left: -27px; top: 6px; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; }
-        .company-name { font-size: 18px; font-weight: 800; }
-        .date-badge { font-size: 10px; color: var(--accent); font-weight: 700; text-transform: uppercase; }
+        /* SECTIONS */
+        .content-section { width: 100%; }
+        .section-header { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: #fff; }
+        .section-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
 
-        /* TAG GRID - FIX FOR OVERFLOW */
-        .tag-grid { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; }
-        .tag { 
-            padding: 8px 14px; 
+        /* EXPERIENCE / TIMELINE */
+        .timeline { border-left: 2px solid var(--border); padding-left: 30px; margin-left: 10px; }
+        .timeline-item { position: relative; margin-bottom: 40px; }
+        .timeline-item::before { content: ''; position: absolute; left: -37px; top: 8px; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; border: 3px solid var(--primary); }
+        
+        .timeline-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px; }
+        .company-name { font-size: 24px; font-weight: 800; color: #fff; }
+        .date-badge { padding: 5px 15px; background: rgba(255,107,74,0.1); color: var(--accent); border-radius: 20px; font-size: 12px; font-weight: 700; border: 1px solid rgba(255,107,74,0.3); }
+        
+        .position-title { color: var(--accent); font-weight: 600; font-size: 16px; margin-bottom: 10px; }
+        .timeline-content li { list-style: none; position: relative; padding-left: 20px; color: var(--text-secondary); font-size: 15px; margin-bottom: 8px; }
+        .timeline-content li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+
+        .medal-badge { display: inline-block; margin-top: 10px; padding: 7px 15px; background: linear-gradient(135deg, #ffd700, #b8860b); color: #000; font-size: 11px; font-weight: 900; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* SKILLS / TAGS */
+        .tag-grid { display: flex; flex-wrap: wrap; gap: 10px; width: 100%; }
+        .tag-item { 
+            padding: 12px 20px; 
             background: var(--secondary); 
             border: 1px solid var(--border); 
-            border-radius: 6px; 
-            font-size: 11px; 
+            border-radius: 10px; 
+            font-size: 13px; 
             font-weight: 600; 
             color: var(--text-secondary);
-            white-space: nowrap; 
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+        .tag-item:hover { border-color: var(--accent); color: #fff; transform: translateY(-2px); }
+
+        /* CONTACTS FOOTER */
+        .main-footer {
+            background: var(--secondary);
+            padding: 60px 20px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .footer-container { max-width: 1200px; margin: 0 auto; }
+        
+        .contacts-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px; 
+        }
+        
+        .contact-item { 
+            display: flex; align-items: center; gap: 15px; 
+            padding: 20px; background: rgba(255,255,255,0.02); 
+            border-radius: 15px; border: 1px solid var(--border); 
+        }
+        .contact-item:hover { border-color: var(--accent); background: rgba(255,107,74,0.05); }
+        
+        .contact-icon { width: 44px; height: 44px; background: var(--accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; color: white; }
+        .contact-text strong { font-size: 14px; display: block; color: #fff; margin-bottom: 2px; }
+        .contact-text span { font-size: 13px; color: var(--text-secondary); word-break: break-all; }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1024px) {
+            .name { font-size: 38px; }
+            .timeline-header { flex-direction: column; align-items: flex-start; gap: 5px; }
         }
 
-        /* CONTACTS GRID - FULL LIST */
-        .contacts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        .contact-item { display: flex; align-items: center; gap: 10px; padding: 12px; background: var(--secondary); border: 1px solid var(--border); border-radius: 10px; text-decoration: none; color: inherit; }
-        .contact-icon { width: 32px; height: 32px; background: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
-        .contact-text strong { font-size: 11px; display: block; color: #fff; }
-        .contact-text span { font-size: 10px; color: var(--text-secondary); }
-
-        /* RESPONSIVE */
-        @media (max-width: 850px) {
-            .container { grid-template-columns: 1fr; }
-            .sidebar { border-right: none; border-bottom: 1px solid var(--border); padding: 40px 20px; }
-            .main-content { padding: 30px 15px; }
+        @media (max-width: 768px) {
+            .main-header { padding: 40px 15px; }
+            .profile-photo-container { width: 120px; height: 120px; }
+            .name { font-size: 32px; }
+            .title { font-size: 14px; letter-spacing: 2px; }
+            
+            .main-container { padding: 30px 15px; gap: 30px; }
+            .marquee { padding: 60px 0; }
+            .artist-tag { font-size: 24px; margin: 0 20px; }
+            
+            .section-header h2 { font-size: 24px; }
+            .company-name { font-size: 20px; }
+            
             .contacts-grid { grid-template-columns: 1fr; }
+            .contact-item { padding: 15px; }
         }
 
         @media (max-width: 480px) {
-            .name { font-size: 26px; }
+            .name { font-size: 28px; }
             .artist-tag { font-size: 20px; margin: 0 15px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <aside class="sidebar">
+
+    <header class="main-header">
+        <div class="header-content">
             <div class="profile-photo-container">
-                <img src="image.png" alt="Денис" class="profile-photo">
+                <img src="image.png" alt="Денис Волошин" class="profile-photo">
             </div>
-            <h1 class="name">Денис<br>Волошин</h1>
+            <h1 class="name">Денис Волошин</h1>
             <div class="title">Project Manager</div>
+        </div>
+    </header>
 
-            <div class="skills-list">
-                <div class="skill-item"><div class="skill-name">Планирование</div><div class="skill-desc">Разбивка проекта на этапы и контроль дедлайнов.</div></div>
-                <div class="skill-item"><div class="skill-name">Коммуникация</div><div class="skill-desc">Синхронизация команды, подрядчиков и заказчика.</div></div>
-                <div class="skill-item"><div class="skill-name">Управление рисками</div><div class="skill-desc">Видеть проблему заранее и иметь план Б.</div></div>
-                <div class="skill-item"><div class="skill-name">Логистика туров</div><div class="skill-desc">Организация перемещений и проживания больших групп.</div></div>
-                <div class="skill-item"><div class="skill-name">Координация</div><div class="skill-desc">Связка тех. групп и артистов в реальном времени.</div></div>
-                <div class="skill-item"><div class="skill-name">AI & Dev</div><div class="skill-desc">Автоматизация процессов через нейросети и код.</div></div>
-            </div>
-        </aside>
+    <div class="main-container">
 
-        <main class="main-content">
-            <div class="section-header"><h2>Опыт работы</h2><div class="section-line"></div></div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="date-badge">2024 — 2025</div>
-                    <div class="company-name">SOLDOUT</div>
-                    <div style="font-size: 13px; color: var(--accent);">Project Manager</div>
-                    <ul style="font-size: 12px; color: var(--text-secondary); margin-top: 5px; padding-left: 15px;">
-                        <li>Полный цикл туров в 36+ городах.</li>
-                        <li>Оптимизация логистики и бюджетов.</li>
-                    </ul>
-                </div>
-                <div class="timeline-item">
-                    <div class="date-badge">2023 — 2024</div>
-                    <div class="company-name">NEBO RECORDS</div>
-                    <div style="font-size: 13px; color: var(--accent);">Project Manager</div>
-                </div>
-            </div>
-
-            <div class="section-header"><h2>Дополнительно</h2><div class="section-line"></div></div>
-            <div class="timeline" style="border-left-color: var(--accent);">
-                <div class="timeline-item">
-                    <div class="date-badge">2021 — 2022</div>
-                    <div class="company-name">Военная служба</div>
-                    <div style="background: gold; color: #000; padding: 2px 8px; border-radius: 4px; font-size: 9px; font-weight: 900; display: inline-block; margin-top: 5px;">🎖 МЕДАЛЬ ЗА ПАРАД 2022</div>
-                </div>
-            </div>
-
-            <div class="section-header"><h2>Образование</h2><div class="section-line"></div></div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="date-badge">2017 — 2021</div>
-                    <div class="company-name">РЭУ им. Г.В. Плеханова</div>
-                    <div style="font-size: 12px; color: var(--text-secondary);">Гостиничное дело</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="date-badge">2006 — 2017</div>
-                    <div class="company-name">Гимназия №4</div>
-                    <div style="font-size: 12px; color: var(--accent);">Экономический класс</div>
-                </div>
-            </div>
-
-            <div class="section-header"><h2>Артисты</h2><div class="section-line"></div></div>
+        <section class="content-section">
             <div class="marquee">
                 <div class="marquee-content">
                     <span class="artist-tag">БАСТА</span><span class="artist-tag">ЗВЕРИ</span>
                     <span class="artist-tag">MACAN</span><span class="artist-tag">ЕГОР КРИД</span>
                     <span class="artist-tag">ПОЛИНА ГАГАРИНА</span><span class="artist-tag">SALUKI</span>
                     <span class="artist-tag">три дня дождя</span><span class="artist-tag">AKMAL'</span>
-                    <span class="artist-tag">JAKONE & AVG</span>
+                    <span class="artist-tag">JAKONE & AVG</span><span class="artist-tag">ПАПИН ОЛИМПОС</span>
                     <span class="artist-tag">БАСТА</span><span class="artist-tag">ЗВЕРИ</span>
                     <span class="artist-tag">MACAN</span><span class="artist-tag">ЕГОР КРИД</span>
                     <span class="artist-tag">ПОЛИНА ГАГАРИНА</span><span class="artist-tag">SALUKI</span>
                     <span class="artist-tag">три дня дождя</span><span class="artist-tag">AKMAL'</span>
-                    <span class="artist-tag">JAKONE & AVG</span>
+                    <span class="artist-tag">JAKONE & AVG</span><span class="artist-tag">ПАПИН ОЛИМПОС</span>
                 </div>
             </div>
+        </section>
 
-            <div class="section-header"><h2>Навыки</h2><div class="section-line"></div></div>
-            <div class="tag-grid">
-                <div class="tag">Bitrix24</div><div class="tag">Trello / Notion</div>
-                <div class="tag">MS Office Full</div><div class="tag">ChatGPT / Gemini</div>
-                <div class="tag">HTML/CSS</div><div class="tag">TG Bot API</div>
-                <div class="tag">Canva / Figma</div><div class="tag">API Integration</div>
-                <div class="tag">Python (Basic)</div><div class="tag">Prompt Engineering</div>
+        <section class="content-section">
+            <div class="section-header"><h2>Опыт работы</h2><div class="section-line"></div></div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="company-name">SOLDOUT</div>
+                        <div class="date-badge">2024 — 2025</div>
+                    </div>
+                    <div class="position-title">Project Manager</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Управление гастрольными турами — полный цикл реализации в 36+ городах.</li>
+                            <li>Планирование маршрутов, бюджетирование и оптимизация логистики (авиа, ЖД, отели).</li>
+                            <li>Координация технических групп, подрядчиков и контроль проведения мероприятий от монтажа до закрытия.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="company-name">NEBO RECORDS</div>
+                        <div class="date-badge">2023 — 2024</div>
+                    </div>
+                    <div class="position-title">Project Manager</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Организация гастрольных туров артистов лейбла, включая логистическое сопровождение.</li>
+                            <li>Работа с техническими командами артистов и координация выступлений на федеральных площадках.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+        </section>
 
+        <section class="content-section">
+            <div class="section-header"><h2>Образование и Дополнительно</h2><div class="section-line"></div></div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="company-name">РЭУ им. Г.В. Плеханова</div>
+                        <div class="date-badge">2017 — 2021</div>
+                    </div>
+                    <div class="position-title">Бакалавриат • Гостиничное дело (ГРТСИ)</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="company-name">Гимназия №4</div>
+                        <div class="date-badge">2006 — 2017</div>
+                    </div>
+                    <div class="position-title" style="color: var(--accent);">Экономический класс</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="company-name">Военная служба</div>
+                        <div class="date-badge">2021 — 2022</div>
+                    </div>
+                    <div class="medal-badge">🎖 Медаль за участие в параде Победы 2022</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-header"><h2>Ключевые навыки и Стек</h2><div class="section-line"></div></div>
+            <div class="tag-grid">
+                <div class="tag-item">Планирование проектов</div>
+                <div class="tag-item">Управление рисками</div>
+                <div class="tag-item">Логистика туров</div>
+                <div class="tag-item">Координация площадок</div>
+                <div class="tag-item">Коммуникация</div>
+                <div class="tag-item">Bitrix24</div>
+                <div class="tag-item">MS Office Full</div>
+                <div class="tag-item">ChatGPT / Gemini AI</div>
+                <div class="tag-item">HTML/CSS</div>
+                <div class="tag-item">Telegram Bot API</div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
             <div class="section-header"><h2>Контакты</h2><div class="section-line"></div></div>
             <div class="contacts-grid">
-                <a href="tel:+79999753423" class="contact-item"><div class="contact-icon">📞</div><div class="contact-text"><strong>Телефон</strong><span>+7 (999) 975-34-23</span></div></a>
-                <a href="https://t.me/disvolo" class="contact-item"><div class="contact-icon">✈️</div><div class="contact-text"><strong>Telegram</strong><span>@disvolo</span></div></a>
-                <a href="https://max.ru/u/f9LHodD0cOJlJzwcUFodXStn9kFjvAxWFXmTY2ACRIRWC0fUkYCLgR96o_g" class="contact-item"><div class="contact-icon">📍</div><div class="contact-text"><strong>Max</strong><span>Профиль</span></div></a>
-                <a href="mailto:disvolo@bk.ru" class="contact-item"><div class="contact-icon">✉️</div><div class="contact-text"><strong>Email</strong><span>disvolo@bk.ru</span></div></a>
-                <a href="https://vk.com/disvolo" class="contact-item"><div class="contact-icon">VK</div><div class="contact-text"><strong>VK</strong><span>vk.com/disvolo</span></div></a>
-                <a href="https://instagram.com/disvolo" class="contact-item"><div class="contact-icon">📷</div><div class="contact-text"><strong>Insta</strong><span>@disvolo</span></div></a>
+                <a href="tel:+79999753423" class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-text"><strong>Телефон</strong><span>+7 (999) 975-34-23</span></div>
+                </a>
+                <a href="https://t.me/disvolo" class="contact-item">
+                    <div class="contact-icon">✈️</div>
+                    <div class="contact-text"><strong>Telegram</strong><span>@disvolo</span></div>
+                </a>
+                <a href="https://max.ru/u/f9LHodD0cOJlJzwcUFodXStn9kFjvAxWFXmTY2ACRIRWC0fUkYCLgR96o_g" class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-text"><strong>Max</strong><span>Открыть профиль Max</span></div>
+                </a>
+                <a href="mailto:disvolo@bk.ru" class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-text"><strong>Email</strong><span>disvolo@bk.ru</span></div>
+                </a>
+                <a href="https://vk.com/disvolo" class="contact-item">
+                    <div class="contact-icon">VK</div>
+                    <div class="contact-text"><strong>ВКонтакте</strong><span>vk.com/disvolo</span></div>
+                </a>
+                <a href="https://instagram.com/disvolo" class="contact-item">
+                    <div class="contact-icon">📷</div>
+                    <div class="contact-text"><strong>Instagram</strong><span>@disvolo</span></div>
+                </a>
             </div>
-        </main>
-    </div>
+        </div>
+    </footer>
+
 </body>
 </html>
