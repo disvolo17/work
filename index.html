@@ -31,29 +31,30 @@
             line-height: 1.4;
         }
 
-        /* --- НОВЫЙ ХЕДЕР: ФОТО НА ВСЮ ШИРИНУ --- */
+        /* --- ХЕДЕР: ФОТО ПОЛНОСТЬЮ (CONTAIN) --- */
         .main-header {
-            position: relative; /* Для позиционирования текста поверх */
+            position: relative;
             width: 100%;
             height: 500px; /* Фиксированная высота шапки */
+            background-color: var(--secondary); /* Фон шапки, если фото не на всю ширину */
             
             /* Укажите здесь путь к вашему изображению! */
             background-image: url('321.png'); 
             
-            background-size: cover; /* Растягивает фото, чтобы заполнить всё пространство */
-            background-position: center; /* Центрирует изображение */
+            /* ИЗМЕНЕНО: containment, чтобы лицо было видно целиком */
+            background-size: contain; 
+            background-position: center top; /* Центрируем и прижимаем к верху */
             background-repeat: no-repeat;
             
-            /* Тонкая линия подчеркивания */
             border-bottom: 3px solid var(--accent); 
         }
 
-        /* Затемнение поверх фото для читаемости текста */
+        /* Затемнение поверх фото (Gradient Overlay) для читаемости текста */
         .main-header::after {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            /* Снизу темнее, сверху светлее */
+            /* Градиент снизу вверх для плавного перехода текста на фото */
             background: linear-gradient(0deg, rgba(5, 10, 20, 0.9) 0%, rgba(5, 10, 20, 0.2) 50%, rgba(5, 10, 20, 0) 100%);
             z-index: 1;
         }
@@ -61,24 +62,24 @@
         /* Контент хедера (Текст) поверх фона */
         .header-content {
             position: absolute;
-            bottom: 40px; /* Отступ снизу */
+            bottom: 40px;
             left: 50%;
-            transform: translateX(-50%); /* Центрируем по горизонтали */
+            transform: translateX(-50%);
             width: 100%;
-            max-width: 1000px; /* Чтобы текст не "лепился" к краям */
+            max-width: 1000px;
             padding: 0 20px;
-            z-index: 2; /* Поверх затемнения */
-            text-align: left; /* Текст выровнен по левому краю контейнера */
+            z-index: 2;
+            text-align: left;
         }
         
         .name { 
             font-family: 'Syne', sans-serif; 
-            font-size: clamp(36px, 10vw, 64px); /* Адаптивный размер имени */
+            font-size: clamp(36px, 10vw, 64px); 
             font-weight: 800; 
             text-transform: uppercase;
             letter-spacing: -2px;
             line-height: 1;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.5); /* Тень для объема на фото */
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
         .title { 
