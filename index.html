@@ -1,4 +1,3 @@
-html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -70,7 +69,6 @@ html
 
         .profile-section { position: relative; z-index: 1; }
 
-        /* БЛОК С ФОТО (УВЕЛИЧЕННЫЙ) */
         .profile-header {
             display: flex;
             align-items: center;
@@ -79,11 +77,11 @@ html
         }
 
         .profile-photo-container {
-            width: 120px; /* Увеличено на 50% (было 80) */
+            width: 120px;
             height: 120px;
             border-radius: 50%;
             overflow: hidden;
-            border: 3px solid var(--accent); /* Чуть толще рамка */
+            border: 3px solid var(--accent);
             box-shadow: 0 0 20px var(--accent-glow);
             flex-shrink: 0;
             background: var(--primary);
@@ -182,7 +180,7 @@ html
 
         /* STATS */
         .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 60px; }
-        .stat-card { background: var(--secondary); padding: 30px 15px; border-radius: 166px; border: 1px solid var(--border); text-align: center; transition: 0.4s; }
+        .stat-card { background: var(--secondary); padding: 30px 15px; border-radius: 16px; border: 1px solid var(--border); text-align: center; transition: 0.4s; }
         .stat-card:hover { transform: translateY(-5px); border-color: var(--accent); }
         .stat-number { font-size: 44px; font-weight: 800; color: var(--accent); font-family: 'Playfair Display', serif; }
         .stat-label { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; }
@@ -207,6 +205,19 @@ html
         .company-name { font-size: 24px; font-weight: 700; }
         .position-title { color: var(--accent); font-weight: 600; font-size: 16px; }
         .date-badge { padding: 6px 16px; background: rgba(255,107,74,0.1); color: var(--accent); border-radius: 20px; font-size: 13px; border: 1px solid rgba(255,107,74,0.3); }
+        
+        .medal-badge {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 12px;
+            background: linear-gradient(135deg, #ffd700 0%, #b8860b 100%);
+            color: #000;
+            font-size: 12px;
+            font-weight: 800;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
         .timeline-content li { position: relative; padding-left: 20px; margin-bottom: 8px; color: var(--text-secondary); list-style: none; font-size: 15px; }
         .timeline-content li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
 
@@ -216,14 +227,7 @@ html
         .artist-tag { padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 30px; font-size: 13px; font-weight: 600; text-align: center; transition: 0.3s; cursor: default; }
         .artist-tag:hover { border-color: var(--accent); color: var(--accent); background: rgba(255,107,74,0.1); transform: translateY(-2px); }
 
-        .events-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-        .event-card { padding: 25px; background: var(--secondary); border: 1px solid var(--border); border-radius: 12px; transition: 0.3s; }
-        .event-card:hover { border-color: var(--accent); transform: scale(1.02); }
-        .event-year { font-size: 11px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
-        .event-name { font-size: 20px; font-weight: 700; margin: 5px 0; }
-        .event-role { font-size: 14px; color: var(--text-secondary); }
-
-        /* CONTACTS - BOTTOM SECTION (ПОЛНЫЙ БЛОК) */
+        /* CONTACTS */
         .contacts-section { background: var(--secondary); padding: 40px; border-radius: 20px; border: 1px solid var(--border); margin-top: 40px; }
         .contacts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 25px; }
 
@@ -234,24 +238,18 @@ html
         }
         .contact-item:hover { border-color: var(--accent); background: rgba(255, 107, 74, 0.05); }
         .contact-icon { width: 40px; height: 40px; background: var(--accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; color: white; }
-        .contact-text { overflow: hidden; }
         .contact-text strong { display: block; font-size: 14px; color: var(--text-primary); margin-bottom: 2px; }
         .contact-text span { font-size: 13px; color: var(--text-secondary); word-break: break-all; }
 
-        /* ===== АДАПТИВНОСТЬ ===== */
         @media (max-width: 1024px) {
             .container { grid-template-columns: 1fr; }
-            .sidebar { border-right: none; border-bottom: 1px solid var(--border); padding: 40px; }
-            .main-content { padding: 40px; }
+            .sidebar { border-right: none; border-bottom: 1px solid var(--border); }
             .contacts-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 768px) {
-            .stats-grid, .events-grid, .contacts-grid { grid-template-columns: 1fr; }
-            .sidebar, .main-content { padding: 30px 20px; }
+            .stats-grid, .contacts-grid { grid-template-columns: 1fr; }
             .name { font-size: 32px; }
-            .profile-header { gap: 15px; flex-direction: column; text-align: center; }
-            .profile-photo-container { width: 100px; height: 100px; }
         }
     </style>
     <base target="_blank">
@@ -260,54 +258,51 @@ html
     <div class="container">
         <aside class="sidebar">
             <div class="profile-section">
-                
                 <div class="profile-header">
                     <h1 class="name">Денис<br>Волошин</h1>
-                    
                     <div class="profile-photo-container">
                         <img src="image.png" alt="Денис Волошин" class="profile-photo">
                     </div>
                 </div>
-                
                 <div class="title">Project Manager</div>
 
                 <div class="section-title">Ключевые навыки</div>
                 <div class="skills-list">
                     <div class="skill-item">
                         <div class="skill-name">Планирование и системность</div>
-                        <div class="skill-desc">Умение разбивать проект на этапы, ставить дедлайны и держать структуру. Без этого всё разваливается.</div>
+                        <div class="skill-desc">Разбивка проекта на этапы, дедлайны и структура.</div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-name">Коммуникация</div>
-                        <div class="skill-desc">Четко доносить задачи, договариваться, синхронизировать команду и клиента. 80% работы ПМа — это разговоры.</div>
+                        <div class="skill-desc">Синхронизация команды и клиента. 80% работы ПМа.</div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-name">Управление рисками</div>
-                        <div class="skill-desc">Заранее видеть, где может пойти жопа, и иметь план B (а лучше C).</div>
+                        <div class="skill-desc">Видеть проблемы заранее и иметь план B.</div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-name">Приоритизация</div>
-                        <div class="skill-desc">Понимать, что важно сейчас, а что можно отложить. Не тонуть в задачах.</div>
+                        <div class="skill-desc">Понимать, что важно сейчас, а что можно отложить.</div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-name">Ответственность за результат</div>
-                        <div class="skill-desc">Не «я передал задачу», а «я довел проект до результата». Полное владение процессом.</div>
+                        <div class="skill-desc">Полное владение процессом до финала.</div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-name">Построение логистики</div>
-                        <div class="skill-desc">Организация маршрутов, транспорта и размещения для команд и артистов в многогородских турах.</div>
+                        <div class="skill-desc">Маршруты, транспорт и отели для туров.</div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-name">Координация команд</div>
-                        <div class="skill-desc">Синхронизация работы технических групп, подрядчиков и артистов на всех этапах проекта.</div>
+                        <div class="skill-desc">Синхронизация тех. групп и артистов.</div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-name">Контроль мероприятий</div>
-                        <div class="skill-desc">Полный цикл управления: от планирования до закрытия проекта на площадке.</div>
+                        <div class="skill-desc">От плана до закрытия на площадке.</div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-name">Стрессоустойчивость</div>
-                        <div class="skill-desc">Сохранять хладнокровие в критических ситуациях и принимать быстрые решения под давлением.</div>
+                        <div class="skill-desc">Хладнокровие и быстрая реакция под давлением.</div>
                     </div>
                 </div>
             </div>
@@ -321,24 +316,9 @@ html
                 </p>
             </div>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">15+</div>
-                    <div class="stat-label">Гастрольных туров</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">36+</div>
-                    <div class="stat-label">Городов</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">200+</div>
-                    <div class="stat-label">Концертов организовано</div>
-                </div>
-            </div>
-
             <div class="experience-section">
                 <div class="section-header">
-                    <h2>Опыт работы</h2>
+                    <h2>Опыт и путь</h2>
                     <div class="section-line"></div>
                 </div>
 
@@ -355,8 +335,6 @@ html
                             <ul>
                                 <li>Управление турами — полный цикл организации гастролей</li>
                                 <li>Планирование маршрутов и оптимизация логистических процессов</li>
-                                <li>Бронирование авиа, ЖД и отелей для команд и артистов</li>
-                                <li>Координация команд и подрядчиков на всех этапах проекта</li>
                                 <li>Контроль проведения мероприятий в 36+ городах</li>
                             </ul>
                         </div>
@@ -373,10 +351,50 @@ html
                         <div class="timeline-content">
                             <ul>
                                 <li>Организация гастрольных туров артистов лейбла</li>
-                                <li>Логистическое сопровождение мероприятий</li>
-                                <li>Работа с артистами и техническими командами</li>
-                                <li>Координация выступлений на федеральных площадках</li>
+                                <li>Логистическое сопровождение и работа с тех. группами</li>
                             </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="company-name">Военная служба по призыву</div>
+                                <div class="position-title">Вооруженные Силы РФ</div>
+                            </div>
+                            <div class="date-badge">2021 — 2022</div>
+                        </div>
+                        <div class="timeline-content">
+                            <p style="color: var(--text-secondary); font-size: 15px;">Прохождение срочной службы.</p>
+                            <div class="medal-badge">🎖 Медаль за участие в параде Победы 2022</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="company-name">РЭУ им. Г.В. Плеханова</div>
+                                <div class="position-title">Бакалавриат • Гостиничное дело</div>
+                            </div>
+                            <div class="date-badge">2017 — 2021</div>
+                        </div>
+                        <div class="timeline-content">
+                            <ul>
+                                <li>Факультет ГРТСИ (Гостинично-ресторанная, туристическая и спортивная индустрия)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="company-name">Гимназия №4</div>
+                                <div class="position-title">Среднее общее образование</div>
+                            </div>
+                            <div class="date-badge">2006 — 2017</div>
+                        </div>
+                        <div class="timeline-content">
+                            <p style="color: var(--text-secondary); font-size: 15px;">Успешное завершение школьной программы.</p>
                         </div>
                     </div>
                 </div>
@@ -388,42 +406,12 @@ html
                     <div class="section-line"></div>
                 </div>
                 <div class="artists-grid">
-                    <div class="artist-tag">БАСТА</div>
-                    <div class="artist-tag">ЗВЕРИ</div>
-                    <div class="artist-tag">MACAN</div>
-                    <div class="artist-tag">ПОЛИНА ГАГАРИНА</div>
-                    <div class="artist-tag">ЕГОР КРИД</div>
-                    <div class="artist-tag">SALUKI</div>
-                    <div class="artist-tag">JAKONE & AVG</div>
-                    <div class="artist-tag">AKMAL'</div>
-                    <div class="artist-tag">тринадцать карат</div>
-                    <div class="artist-tag">три дня дождя</div>
-                    <div class="artist-tag">ПАПИН ОЛИМПОС</div>
-                    <div class="artist-tag">Даниил Ким</div>
-                </div>
-            </div>
-
-            <div class="experience-section">
-                <div class="section-header">
-                    <h2>Крупные мероприятия</h2>
-                    <div class="section-line"></div>
-                </div>
-                <div class="events-grid">
-                    <div class="event-card">
-                        <div class="event-year">2023</div>
-                        <div class="event-name">VK Fest</div>
-                        <div class="event-role">Project Manager</div>
-                    </div>
-                    <div class="event-card">
-                        <div class="event-year">2024</div>
-                        <div class="event-name">MTS Live Summer</div>
-                        <div class="event-role">Project Manager</div>
-                    </div>
-                    <div class="event-card">
-                        <div class="event-year">2023</div>
-                        <div class="event-name">День города НН</div>
-                        <div class="event-role">Project Manager</div>
-                    </div>
+                    <div class="artist-tag">БАСТА</div><div class="artist-tag">ЗВЕРИ</div>
+                    <div class="artist-tag">MACAN</div><div class="artist-tag">ПОЛИНА ГАГАРИНА</div>
+                    <div class="artist-tag">ЕГОР КРИД</div><div class="artist-tag">SALUKI</div>
+                    <div class="artist-tag">JAKONE & AVG</div><div class="artist-tag">AKMAL'</div>
+                    <div class="artist-tag">тринадцать карат</div><div class="artist-tag">три дня дождя</div>
+                    <div class="artist-tag">ПАПИН ОЛИМПОС</div><div class="artist-tag">Даниил Ким</div>
                 </div>
             </div>
 
