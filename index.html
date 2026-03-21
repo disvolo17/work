@@ -10,6 +10,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--primary); font-family: 'Inter', sans-serif; color: var(--text-primary); line-height: 1.5; }
         
+        /* ХЕДЕР С ФОТО */
         .main-header {
             position: relative; width: 100%; height: 60vh; min-height: 450px;
             background: var(--secondary) url('312.png') no-repeat center 20% / cover;
@@ -28,17 +29,17 @@
         .section-header h2 { font-family: 'Syne', sans-serif; font-size: 24px; text-transform: uppercase; }
         .section-line { flex-grow: 1; height: 2px; background: var(--accent); }
 
-        /* Навыки */
+        /* НАВЫКИ С ПОДСВЕТКОЙ */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
         .skill-card { padding: 20px; background: var(--secondary); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; transition: 0.3s; }
-        .skill-card:hover { background: #151f35; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(255, 77, 38, 0.2); }
+        .skill-card:hover { background: #151f35; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(255, 77, 38, 0.2); border-color: #fff; }
         .skill-card strong { display: block; font-size: 13px; text-transform: uppercase; margin-bottom: 5px; }
         
         .stack-box { background: var(--secondary); padding: 20px; border-radius: 12px; border: 1px solid var(--border); margin-top: 20px; }
         .tag-grid { display: flex; flex-wrap: wrap; gap: 8px; }
         .tag-item { padding: 6px 12px; background: rgba(255, 77, 38, 0.1); border: 1px solid var(--accent); border-radius: 4px; font-size: 11px; font-weight: 700; }
 
-        /* Таймлайн (Опыт, Образование, Служба) */
+        /* ТАЙМЛАЙН */
         .timeline { border-left: 2px solid var(--border); padding-left: 20px; }
         .timeline-item { position: relative; margin-bottom: 35px; }
         .timeline-item::before { content: ''; position: absolute; left: -26px; top: 8px; width: 10px; height: 10px; background: var(--accent); transform: rotate(45deg); }
@@ -46,7 +47,7 @@
         .place { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; display: block; }
         .desc { font-size: 13px; color: var(--text-secondary); margin-top: 5px; }
 
-        /* Контакты */
+        /* КОНТАКТЫ */
         .contacts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
         .contact-link { display: block; padding: 15px; background: var(--secondary); border-radius: 10px; text-decoration: none; border: 1px solid var(--border); transition: 0.3s; }
         .contact-link:hover { border-color: var(--accent); background: #111a31; }
@@ -58,7 +59,12 @@
 </head>
 <body>
     <a href="resume.pdf" download class="pdf-btn">Скачать PDF</a>
-    <header class="main-header"><div class="header-content"><h1 class="name">Денис Волошин</h1><div class="title">Project Manager</div></div></header>
+    <header class="main-header">
+        <div class="header-content">
+            <h1 class="name">Денис Волошин</h1>
+            <div class="title">Project Manager</div>
+        </div>
+    </header>
 
     <div class="main-container">
         <section>
@@ -67,12 +73,15 @@
                 <div class="skill-card"><strong>Планирование</strong><p>Управление ресурсами и жесткий контроль дедлайнов.</p></div>
                 <div class="skill-card"><strong>Коммуникация</strong><p>Синхронизация команды, подрядчиков и заказчика.</p></div>
                 <div class="skill-card"><strong>Риски</strong><p>Вижу «узкие места» и всегда имею план Б.</p></div>
+                <div class="skill-card"><strong>Логистика туров</strong><p>Организация маршрутов и проживания для больших команд.</p></div>
                 <div class="skill-card"><strong>Стрессоустойчивость</strong><p>Принятие решений в форс-мажорных ситуациях.</p></div>
+                <div class="skill-card"><strong>Координация площадок</strong><p>Менеджмент бэкстейджа и работы всех департаментов.</p></div>
             </div>
             <div class="stack-box">
                 <div class="tag-grid">
-                    <span class="tag-item">Bitrix24</span><span class="tag-item">MS Office (Full)</span><span class="tag-item">Trello</span>
-                    <span class="tag-item">ChatGPT/Gemini</span><span class="tag-item">Figma</span><span class="tag-item">HTML/CSS</span>
+                    <span class="tag-item">Bitrix24</span><span class="tag-item">MS Office (Full)</span>
+                    <span class="tag-item">Trello</span><span class="tag-item">ChatGPT/Gemini</span>
+                    <span class="tag-item">Figma</span><span class="tag-item">HTML/CSS</span>
                 </div>
             </div>
         </section>
@@ -83,6 +92,10 @@
                 <div class="timeline-item">
                     <span class="date">2017 — 2021</span><span class="place">РЭУ им. Плеханова</span>
                     <p class="desc">Гостиничное дело</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="date">2006 — 2017</span><span class="place">Гимназия №4</span>
+                    <p class="desc">Экономический класс</p>
                 </div>
                 <div class="timeline-item">
                     <span class="date">2021 — 2022</span><span class="place">Военная служба</span>
@@ -98,6 +111,8 @@
                 <a href="https://t.me/disvolo" class="contact-link"><strong>Telegram</strong><span>@disvolo</span></a>
                 <a href="mailto:disvolo@bk.ru" class="contact-link"><strong>Email</strong><span>disvolo@bk.ru</span></a>
                 <a href="https://vk.com/disvolo" class="contact-link"><strong>ВКонтакте</strong><span>vk.com/disvolo</span></a>
+                <a href="https://instagram.com/disvolo" class="contact-link"><strong>Instagram</strong><span>@disvolo</span></a>
+                <a href="#" class="contact-link"><strong>Max</strong><span>Профиль</span></a>
             </div>
         </section>
     </div>
