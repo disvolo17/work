@@ -57,14 +57,13 @@
             width: calc(100% - 70px);
         }
 
-        /* ИЗМЕНЕНО: Позиционирование контента внизу шапки */
         .hero {
             position: relative;
             width: 100%;
             height: 100vh;
             background: url('blat.jpg') no-repeat center center / cover;
             display: flex;
-            align-items: flex-end; /* Прижимаем к низу */
+            align-items: flex-end;
             justify-content: center;
             border-bottom: 2px solid var(--accent);
         }
@@ -79,7 +78,7 @@
             position: relative;
             z-index: 2;
             padding: 30px 60px;
-            margin-bottom: 40px; /* Отступ от нижнего края */
+            margin-bottom: 40px;
             background: var(--glass);
             backdrop-filter: blur(20px);
             border-radius: 20px;
@@ -92,6 +91,20 @@
         .title { font-size: 14px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 5px; }
 
         .main-container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+
+        /* ЦЕНТРИРОВАННЫЙ ЗАГОЛОВОК "РАБОТАЛ С" */
+        .worked-with-container {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .worked-with-label {
+            font-family: 'Syne', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            color: var(--text-secondary);
+            font-weight: 700;
+        }
 
         .marquee { 
             width: 100%; overflow: hidden; background: rgba(255, 255, 255, 0.03); 
@@ -151,6 +164,10 @@
         </header>
 
         <div class="main-container">
+            <div class="worked-with-container">
+                <div class="worked-with-label">Работал с</div>
+            </div>
+
             <div class="marquee">
                 <div class="marquee-content">
                     <span class="artist-tag">БАСТА</span><span class="artist-tag">ЗВЕРИ</span>
