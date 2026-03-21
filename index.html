@@ -31,57 +31,48 @@
             line-height: 1.4;
         }
 
-        /* VIDEO BACKGROUND OVERLAY */
-        #video-bg-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        #video-bg-container.active { opacity: 1; }
-        #bg-video-player {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            filter: brightness(0.3) blur(5px);
-        }
-        .video-ui {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 2;
-        }
-        .video-ui span { font-family: 'Syne', sans-serif; color: var(--accent); letter-spacing: 5px; font-size: 14px; text-transform: uppercase; }
-        #active-artist-name { font-family: 'Syne', sans-serif; font-size: clamp(30px, 6vw, 60px); text-transform: uppercase; margin-top: 10px; }
-
         /* HEADER */
         .main-header {
-            position: relative; z-index: 10;
             background: var(--secondary);
-            padding: 80px 20px 50px;
+            padding: 70px 20px 50px;
             text-align: center;
             border-bottom: 2px solid var(--accent);
         }
         .profile-photo-container { 
-            width: 150px; height: 150px; 
-            border-radius: 40px; 
+            width: 140px; height: 140px; 
+            border-radius: 35px; 
             overflow: hidden; 
             border: 4px solid var(--accent); 
             margin: 0 auto 25px;
             transform: rotate(-3deg);
-            box-shadow: 12px 12px 0px var(--accent-glow);
+            box-shadow: 10px 10px 0px var(--accent-glow);
         }
-        .profile-photo { width: 100%; height: 100%; object-fit: cover; transform: rotate(3deg) scale(1.05); }
+        .profile-photo { width: 100%; height: 100%; object-fit: cover; transform: rotate(3deg) scale(1.1); }
         
-        .name { font-family: 'Syne', sans-serif; font-size: clamp(32px, 8vw, 52px); font-weight: 800; text-transform: uppercase; letter-spacing: -1px; }
-        .title { font-size: 14px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 6px; margin-top: 5px; }
+        .name { 
+            font-family: 'Syne', sans-serif; 
+            font-size: clamp(32px, 8vw, 52px); 
+            font-weight: 800; 
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-bottom: 5px; 
+        }
+        .title { 
+            font-size: 14px; 
+            font-weight: 700; 
+            color: var(--accent); 
+            text-transform: uppercase; 
+            letter-spacing: 5px; 
+        }
 
-        .main-container { position: relative; z-index: 10; width: 100%; max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .main-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-        /* WORKED WITH - CENTERED */
+        /* CENTERED TITLE */
         .worked-with {
             text-align: center;
             font-family: 'Syne', sans-serif;
@@ -90,30 +81,39 @@
             text-transform: uppercase;
             letter-spacing: 8px;
             color: var(--text-secondary);
-            margin: 60px 0 30px; /* Идеальный центр */
+            margin: 50px 0 30px;
         }
 
-        /* MARQUEE */
+        /* GLASS MARQUEE */
         .marquee { 
-            width: 100%; overflow: hidden; 
-            background: rgba(13, 20, 37, 0.7); 
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            padding: 35px 0; margin-bottom: 60px; 
-            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-            border-radius: 20px;
+            width: 100%; 
+            overflow: hidden; 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            padding: 25px 0; 
+            margin-bottom: 50px; 
+            border-radius: 15px;
         }
-        .marquee-content { display: inline-block; white-space: nowrap; animation: scroll 15s linear infinite; }
+        .marquee-content { 
+            display: inline-block; 
+            white-space: nowrap;
+            animation: scroll 12s linear infinite; 
+        }
         .marquee:hover .marquee-content { animation-play-state: paused; }
         
         .artist-tag { 
             display: inline-block; 
-            font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; 
-            margin: 0 45px; text-transform: uppercase; 
-            color: rgba(255, 255, 255, 0.6);
-            cursor: pointer; transition: 0.3s;
+            font-family: 'Syne', sans-serif;
+            font-size: 22px; 
+            font-weight: 800; 
+            margin: 0 40px; 
+            text-transform: uppercase; 
+            color: #fff;
+            letter-spacing: 1px;
         }
-        .artist-tag:hover { color: var(--accent); transform: scale(1.1); }
-
+        
         @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         /* SECTIONS */
@@ -121,10 +121,15 @@
         .section-header h2 { font-family: 'Syne', sans-serif; font-size: 26px; text-transform: uppercase; }
         .section-line { flex-grow: 1; height: 3px; background: var(--accent); }
 
-        /* SKILLS */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-        .skill-card { padding: 20px; background: var(--secondary); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; }
-        .skill-card strong { display: block; color: #fff; font-family: 'Syne', sans-serif; font-size: 13px; text-transform: uppercase; margin-bottom: 6px; }
+        /* SKILLS GRID - ALL 9 RETURNED */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .skill-card { 
+            padding: 20px; 
+            background: var(--secondary); 
+            border-left: 4px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+        }
+        .skill-card strong { display: block; color: #fff; font-family: 'Syne', sans-serif; font-size: 13px; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 1px; }
         .skill-card p { font-size: 12px; color: var(--text-secondary); }
 
         /* TIMELINE */
@@ -134,28 +139,27 @@
         .company-name { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; }
         .date-badge { font-size: 10px; color: var(--accent); font-weight: 800; text-transform: uppercase; margin-bottom: 5px; display: block; }
         .timeline-content { font-size: 14px; color: var(--text-secondary); list-style: none; margin-top: 8px; }
+        .timeline-content li { margin-bottom: 4px; position: relative; padding-left: 15px; }
+        .timeline-content li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
 
-        /* CONTACTS */
+        /* CONTACTS - ALL 6 RETURNED */
         .contacts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        .contact-item { display: flex; align-items: center; gap: 15px; padding: 20px; background: var(--secondary); border: 1px solid var(--border); border-radius: 15px; text-decoration: none; transition: 0.3s; }
-        .contact-item:hover { border-color: var(--accent); transform: translateY(-3px); }
-        .contact-text strong { font-family: 'Syne', sans-serif; font-size: 10px; display: block; text-transform: uppercase; color: var(--accent); letter-spacing: 2px; }
+        .contact-item { 
+            display: flex; align-items: center; gap: 15px; 
+            padding: 18px; background: var(--secondary); 
+            border: 1px solid var(--border); border-radius: 12px; 
+            text-decoration: none; 
+        }
+        .contact-text strong { font-family: 'Syne', sans-serif; font-size: 10px; display: block; text-transform: uppercase; color: var(--accent); letter-spacing: 1.5px; margin-bottom: 2px; }
         .contact-text span { font-size: 14px; color: #fff; font-weight: 600; }
         
-        @media (max-width: 768px) { .contacts-grid { grid-template-columns: 1fr; } .name { font-size: 32px; } }
+        @media (max-width: 768px) {
+            .contacts-grid { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
-
-    <div id="video-bg-container">
-        <video id="bg-video-player" loop muted playsinline>
-            <source src="" type="video/mp4">
-        </video>
-        <div class="video-ui">
-            <span>ВИДЕОКЕЙС</span>
-            <div id="active-artist-name">АРТИСТ</div>
-        </div>
-    </div>
 
     <header class="main-header">
         <div class="profile-photo-container">
@@ -171,35 +175,31 @@
         
         <div class="marquee">
             <div class="marquee-content">
-                <span class="artist-tag" data-video="https://www.w3schools.com/html/mov_bbb.mp4">БАСТА</span>
-                <span class="artist-tag" data-video="">ЗВЕРИ</span>
-                <span class="artist-tag" data-video="">MACAN</span>
-                <span class="artist-tag" data-video="">ЕГОР КРИД</span>
-                <span class="artist-tag" data-video="">ПОЛИНА ГАГАРИНА</span>
-                <span class="artist-tag" data-video="">SALUKI</span>
-                <span class="artist-tag" data-video="">три дня дождя</span>
-                <span class="artist-tag" data-video="">JAKONE & AVG</span>
-                <span class="artist-tag" data-video="">ПАПИН ОЛИМПОС</span>
-                <span class="artist-tag" data-video="https://www.w3schools.com/html/mov_bbb.mp4">БАСТА</span>
-                <span class="artist-tag" data-video="">ЗВЕРИ</span>
-                <span class="artist-tag" data-video="">MACAN</span>
-                <span class="artist-tag" data-video="">ЕГОР КРИД</span>
-                <span class="artist-tag" data-video="">ПОЛИНА ГАГАРИНА</span>
-                <span class="artist-tag" data-video="">SALUKI</span>
-                <span class="artist-tag" data-video="">три дня дождя</span>
-                <span class="artist-tag" data-video="">JAKONE & AVG</span>
-                <span class="artist-tag" data-video="">ПАПИН ОЛИМПОС</span>
+                <span class="artist-tag">БАСТА</span><span class="artist-tag">ЗВЕРИ</span>
+                <span class="artist-tag">MACAN</span><span class="artist-tag">ЕГОР КРИД</span>
+                <span class="artist-tag">ПОЛИНА ГАГАРИНА</span><span class="artist-tag">SALUKI</span>
+                <span class="artist-tag">AKMAL'</span><span class="artist-tag">три дня дождя</span>
+                <span class="artist-tag">JAKONE & AVG</span><span class="artist-tag">ПАПИН ОЛИМПОС</span>
+                <span class="artist-tag">БАСТА</span><span class="artist-tag">ЗВЕРИ</span>
+                <span class="artist-tag">MACAN</span><span class="artist-tag">ЕГОР КРИД</span>
+                <span class="artist-tag">ПОЛИНА ГАГАРИНА</span><span class="artist-tag">SALUKI</span>
+                <span class="artist-tag">AKMAL'</span><span class="artist-tag">три дня дождя</span>
+                <span class="artist-tag">JAKONE & AVG</span><span class="artist-tag">ПАПИН ОЛИМПОС</span>
             </div>
         </div>
 
         <section>
             <div class="section-header"><h2>Навыки</h2><div class="section-line"></div></div>
             <div class="skills-grid">
-                <div class="skill-card"><strong>Планирование</strong><p>Управление ресурсами и жесткий контроль дедлайнов.</p></div>
-                <div class="skill-card"><strong>Логистика туров</strong><p>Маршруты, перелеты и проживание для больших команд.</p></div>
-                <div class="skill-card"><strong>AI Implementation</strong><p>Автоматизация рабочих процессов с помощью ИИ.</p></div>
-                <div class="skill-card"><strong>Коммуникация</strong><p>Синхронизация команды, подрядчиков и заказчика.</p></div>
-                <div class="skill-card"><strong>Риски</strong><p>Разработка планов Б для любых форс-мажоров.</p></div>
+                <div class="skill-card"><strong>Планирование</strong><p>Разбивка проекта на этапы, управление ресурсами и жесткий контроль дедлайнов.</p></div>
+                <div class="skill-card"><strong>Коммуникация</strong><p>Синхронизация команды, подрядчиков и заказчика. 80% работы — общение.</p></div>
+                <div class="skill-card"><strong>Управление рисками</strong><p>Вижу «узкие места» заранее и всегда имею рабочий план Б.</p></div>
+                <div class="skill-card"><strong>Приоритизация</strong><p>Выделение критических задач и умение не тонуть в рутине.</p></div>
+                <div class="skill-card"><strong>Ориентация на результат</strong><p>Личная ответственность за успех проекта до самого финала.</p></div>
+                <div class="skill-card"><strong>Логистика туров</strong><p>Организация маршрутов, перелетов и проживания для больших команд.</p></div>
+                <div class="skill-card"><strong>Координация площадок</strong><p>Связка технических служб, администраций и артистов в реальном времени.</p></div>
+                <div class="skill-card"><strong>Стрессоустойчивость</strong><p>Хладнокровие и быстрое принятие решений в критических ситуациях.</p></div>
+                <div class="skill-card"><strong>Dev & AI Implementation</strong><p>Использование ИИ и создание веб-решений для автоматизации задач.</p></div>
             </div>
         </section>
 
@@ -209,7 +209,33 @@
                 <div class="timeline-item">
                     <span class="date-badge">2024 — 2025</span>
                     <div class="company-name">SOLDOUT</div>
-                    <ul class="timeline-content"><li>Туры в 36+ городах. Полный цикл продакшена.</li></ul>
+                    <ul class="timeline-content">
+                        <li>Управление турами в 36+ городах.</li>
+                        <li>Логистика, бюджетирование, тех. контроль на площадках.</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <span class="date-badge">2023 — 2024</span>
+                    <div class="company-name">NEBO RECORDS</div>
+                    <ul class="timeline-content">
+                        <li>Гастроли и координация выступлений артистов лейбла.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header"><h2>База</h2><div class="section-line"></div></div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="date-badge">2017 — 2021</span>
+                    <div class="company-name">РЭУ Плеханова</div>
+                    <p style="font-size: 13px; color: var(--text-secondary);">Гостиничное дело</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="date-badge">2021 — 2022</span>
+                    <div class="company-name">Военная служба</div>
+                    <div style="background: var(--accent); color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: 900; display: inline-block; margin-top: 5px;">МЕДАЛЬ ЗА ПАРАД 2022</div>
                 </div>
             </div>
         </section>
@@ -217,36 +243,15 @@
         <section>
             <div class="section-header"><h2>Контакты</h2><div class="section-line"></div></div>
             <div class="contacts-grid">
-                <a href="https://t.me/disvolo" class="contact-item"><div class="contact-text"><strong>Telegram</strong><span>@disvolo</span></div></a>
                 <a href="tel:+79999753423" class="contact-item"><div class="contact-text"><strong>Телефон</strong><span>+7 (999) 975-34-23</span></div></a>
+                <a href="https://t.me/disvolo" class="contact-item"><div class="contact-text"><strong>Telegram</strong><span>@disvolo</span></div></a>
+                <a href="https://max.ru/u/f9LHodD0cOJlJzwcUFodXStn9kFjvAxWFXmTY2ACRIRWC0fUkYCLgR96o_g" class="contact-item"><div class="contact-text"><strong>Max</strong><span>Профиль</span></div></a>
                 <a href="mailto:disvolo@bk.ru" class="contact-item"><div class="contact-text"><strong>Email</strong><span>disvolo@bk.ru</span></div></a>
                 <a href="https://vk.com/disvolo" class="contact-item"><div class="contact-text"><strong>ВКонтакте</strong><span>vk.com/disvolo</span></div></a>
+                <a href="https://instagram.com/disvolo" class="contact-item"><div class="contact-text"><strong>Instagram</strong><span>@disvolo</span></div></a>
             </div>
         </section>
     </div>
 
-    <script>
-        const tags = document.querySelectorAll('.artist-tag');
-        const bgContainer = document.getElementById('video-bg-container');
-        const videoPlayer = document.getElementById('bg-video-player');
-        const artistNameDisplay = document.getElementById('active-artist-name');
-
-        tags.forEach(tag => {
-            tag.addEventListener('mouseenter', () => {
-                const videoSrc = tag.getAttribute('data-video');
-                if (videoSrc) {
-                    videoPlayer.src = videoSrc;
-                    videoPlayer.play();
-                    artistNameDisplay.innerText = tag.innerText;
-                    bgContainer.classList.add('active');
-                }
-            });
-
-            tag.addEventListener('mouseleave', () => {
-                bgContainer.classList.remove('active');
-                videoPlayer.pause();
-            });
-        });
-    </script>
 </body>
 </html>
