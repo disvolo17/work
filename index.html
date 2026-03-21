@@ -6,6 +6,7 @@
     <title>Денис Волошин — Project Manager</title>
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📍</text></svg>">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 
     <style>
@@ -55,17 +56,17 @@
         .section-header h2 { font-family: 'Playfair Display', serif; font-size: 30px; }
         .section-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
 
-        /* GALLERY CAROUSEL */
-        .gallery-container { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 15px; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: var(--accent) var(--secondary); }
-        .gallery-item { min-width: 280px; height: 180px; background: var(--secondary); border-radius: 12px; overflow: hidden; scroll-snap-align: start; border: 1px solid var(--border); }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; opacity: 0.8; }
-        .gallery-item:hover img { opacity: 1; transform: scale(1.05); }
+        /* INFINITE CAROUSEL */
+        .marquee { width: 100%; overflow: hidden; white-space: nowrap; background: rgba(255, 255, 255, 0.02); padding: 40px 0; border-radius: 12px; margin: 20px 0; }
+        .marquee-content { display: inline-block; animation: scroll 28s linear infinite; } /* Ускорена на 30% */
+        .artist-tag { display: inline-block; font-size: 26px; font-weight: 800; color: #fff; margin: 0 50px; text-transform: uppercase; letter-spacing: 2px; transform: scaleY(1.8); transform-origin: center; opacity: 0.7; transition: 0.3s; }
+        .artist-tag:hover { opacity: 1; color: var(--accent); }
+        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         /* TIMELINE */
         .timeline { border-left: 2px solid var(--border); padding-left: 30px; position: relative; }
         .timeline-item { position: relative; margin-bottom: 35px; padding-left: 15px; }
         .timeline-item::before { content: ''; position: absolute; left: -37px; top: 8px; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; border: 3px solid var(--primary); }
-        .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; flex-wrap: wrap; }
         .company-name { font-size: 20px; font-weight: 800; }
         .date-badge { padding: 4px 12px; background: rgba(255,107,74,0.1); color: var(--accent); border-radius: 20px; font-size: 12px; border: 1px solid rgba(255,107,74,0.3); }
         .position-title { color: var(--accent); font-weight: 600; font-size: 15px; margin-bottom: 8px; }
@@ -74,30 +75,16 @@
 
         .medal-badge { display: inline-block; margin-top: 8px; padding: 6px 14px; background: linear-gradient(135deg, #ffd700, #b8860b); color: #000; font-size: 11px; font-weight: 900; border-radius: 4px; text-transform: uppercase; }
 
-        /* INFINITE CAROUSEL */
-        .marquee { width: 100%; overflow: hidden; white-space: nowrap; background: rgba(255, 255, 255, 0.02); padding: 40px 0; border-radius: 12px; margin: 20px 0; }
-        .marquee-content { display: inline-block; animation: scroll 40s linear infinite; }
-        .artist-tag { display: inline-block; font-size: 26px; font-weight: 800; color: #fff; margin: 0 50px; text-transform: uppercase; letter-spacing: 2px; transform: scaleY(1.8); transform-origin: center; opacity: 0.7; transition: 0.3s; }
-        .artist-tag:hover { opacity: 1; color: var(--accent); }
-        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-        /* TOOLS GRID */
-        .tag-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-        .tag { padding: 8px 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 25px; font-size: 12px; font-weight: 600; transition: 0.3s; }
-        .tag:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-        .tool-tag { border-radius: 8px; background: var(--secondary); padding: 12px 20px; min-width: 140px; text-align: center; font-size: 13px; }
-
         /* CONTACTS */
         .contacts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
         .contact-item { display: flex; align-items: center; gap: 15px; padding: 15px; background: var(--secondary); border-radius: 12px; border: 1px solid var(--border); text-decoration: none; color: inherit; transition: 0.3s; }
         .contact-item:hover { border-color: var(--accent); background: rgba(255,107,74,0.05); }
-        .contact-icon { width: 36px; height: 36px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; color: white; }
-        .contact-text { display: flex; flex-direction: column; overflow: hidden; }
+        .contact-icon { width: 36px; height: 36px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: white; flex-shrink: 0; }
         .contact-text strong { font-size: 13px; color: #fff; }
-        .contact-text span { font-size: 12px; color: var(--text-secondary); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+        .contact-text span { font-size: 12px; color: var(--text-secondary); }
 
         @media (max-width: 1024px) { .container { grid-template-columns: 1fr; } .sidebar { border-right: none; } }
-        @media (max-width: 768px) { .contacts-grid { grid-template-columns: 1fr; } .main-content { padding: 30px 20px; } }
+        @media (max-width: 768px) { .contacts-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -111,39 +98,33 @@
                     </div>
                 </div>
                 <div class="title">Project Manager</div>
+
                 <div class="section-title">Ключевые навыки</div>
                 <div class="skills-list">
-                    <div class="skill-item"><div class="skill-name">Планирование</div><div class="skill-desc">Разбивка проекта на этапы и контроль дедлайнов.</div></div>
-                    <div class="skill-item"><div class="skill-name">Коммуникация</div><div class="skill-desc">Синхронизация команды и клиента.</div></div>
-                    <div class="skill-item"><div class="skill-name">Риски</div><div class="skill-desc">Видеть проблему заранее и иметь план B.</div></div>
-                    <div class="skill-item"><div class="skill-name">Логистика</div><div class="skill-desc">Маршруты, авиа и отели для больших команд.</div></div>
-                    <div class="skill-item"><div class="skill-name">AI & Web Dev</div><div class="skill-desc">Использование ИИ и создание веб-решений.</div></div>
-                    <div class="skill-item"><div class="skill-name">Приоритизация</div><div class="skill-desc">Понимать, что важно сейчас.</div></div>
-                    <div class="skill-item"><div class="skill-name">Результат</div><div class="skill-desc">Ответственность до финала.</div></div>
-                    <div class="skill-item"><div class="skill-name">Координация</div><div class="skill-desc">Связка тех. групп и артистов.</div></div>
-                    <div class="skill-item"><div class="skill-name">Стрессоустойчивость</div><div class="skill-desc">Хладнокровие под давлением.</div></div>
+                    <div class="skill-item"><div class="skill-name">Планирование</div><div class="skill-desc">Разбивка сложного проекта на этапы, управление ресурсами и жесткий контроль дедлайнов.</div></div>
+                    <div class="skill-item"><div class="skill-name">Коммуникация</div><div class="skill-desc">80% работы ПМа — это общение. Умею синхронизировать команду, подрядчиков и заказчика.</div></div>
+                    <div class="skill-item"><div class="skill-name">Управление рисками</div><div class="skill-desc">Умение видеть «узкие места» проекта заранее и всегда иметь рабочий план Б.</div></div>
+                    <div class="skill-item"><div class="skill-name">Приоритизация</div><div class="skill-desc">Способность выделять критически важные задачи и не тонуть в операционной рутине.</div></div>
+                    <div class="skill-item"><div class="skill-name">Ориентация на результат</div><div class="skill-desc">Фокус на финальной цели и личная ответственность за успех проекта, а не просто за процесс.</div></div>
+                    <div class="skill-item"><div class="skill-name">Логистика туров</div><div class="skill-desc">Организация сложных маршрутов, перелетов и проживания для команд от 10 человек.</div></div>
+                    <div class="skill-item"><div class="skill-name">Координация площадок</div><div class="skill-desc">Связка технических служб, администраций площадок и артистов в режиме реального времени.</div></div>
+                    <div class="skill-item"><div class="skill-name">Стрессоустойчивость</div><div class="skill-desc">Сохранение хладнокровия и способности принимать решения в критических ситуациях на площадке.</div></div>
+                    <div class="skill-item"><div class="skill-name">Dev & AI Implementation</div><div class="skill-desc">Использование ИИ для автоматизации и создание веб-решений для внутренних задач.</div></div>
                 </div>
             </div>
         </aside>
 
         <main class="main-content">
-            <div class="section-header"><h2>Галерея проектов</h2><div class="section-line"></div></div>
-            <div class="gallery-container">
-                <div class="gallery-item"><img src="photo1.jpg" alt="P1"></div>
-                <div class="gallery-item"><img src="photo2.jpg" alt="P2"></div>
-                <div class="gallery-item"><img src="photo3.jpg" alt="P3"></div>
-            </div>
-
-            <div class="section-header"><h2>Опыт и путь</h2><div class="section-line"></div></div>
+            <div class="section-header"><h2>Опыт работы</h2><div class="section-line"></div></div>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-header"><div class="company-name">SOLDOUT</div><div class="date-badge">2024 — 2025</div></div>
                     <div class="position-title">Project Manager</div>
                     <div class="timeline-content">
                         <ul>
-                            <li>Управление турами — полный цикл в 36+ городах</li>
-                            <li>Планирование маршрутов и оптимизация логистики</li>
-                            <li>Контроль мероприятий от монтажа до закрытия</li>
+                            <li>Управление гастрольными турами — полный цикл реализации в 36+ городах</li>
+                            <li>Планирование маршрутов, бюджетирование и оптимизация логистики</li>
+                            <li>Координация тех. групп и контроль проведения мероприятий на местах</li>
                         </ul>
                     </div>
                 </div>
@@ -154,7 +135,7 @@
                     <div class="timeline-content">
                         <ul>
                             <li>Организация гастрольных туров артистов лейбла</li>
-                            <li>Логистическое сопровождение и работа с тех. группами</li>
+                            <li>Логистическое сопровождение и работа с техническими группами</li>
                             <li>Координация выступлений на федеральных площадках</li>
                         </ul>
                     </div>
@@ -164,15 +145,17 @@
                     <div class="timeline-header"><div class="company-name">Военная служба</div><div class="date-badge">2021 — 2022</div></div>
                     <div class="medal-badge">🎖 Медаль за участие в параде Победы 2022</div>
                 </div>
+            </div>
 
+            <div class="section-header"><h2>Образование</h2><div class="section-line"></div></div>
+            <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-header"><div class="company-name">РЭУ им. Г.В. Плеханова</div><div class="date-badge">2017 — 2021</div></div>
                     <div class="position-title">Бакалавриат • Гостиничное дело (ГРТСИ)</div>
-                    <div class="timeline-content"><ul><li>Специализация: Управление в индустрии гостеприимства</li></ul></div>
                 </div>
-
                 <div class="timeline-item">
                     <div class="timeline-header"><div class="company-name">Гимназия №4</div><div class="date-badge">2006 — 2017</div></div>
+                    <div class="position-title">Экономический класс</div>
                 </div>
             </div>
 
@@ -192,13 +175,13 @@
                 </div>
             </div>
 
-            <div class="section-header"><h2>Инструменты и ИИ</h2><div class="section-line"></div></div>
-            <div class="tag-grid">
-                <div class="tag tool-tag">Bitrix24</div>
-                <div class="tag tool-tag">MS Office (Full Pack)</div>
-                <div class="tag tool-tag">ChatGPT / Gemini AI</div>
-                <div class="tag tool-tag">Web Dev (HTML/CSS)</div>
-                <div class="tag tool-tag">Telegram Bot Creation</div>
+            <div class="section-header"><h2>Стек технологий</h2><div class="section-line"></div></div>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <div class="tag" style="background:var(--secondary); padding: 12px 20px; border-radius: 8px; border: 1px solid var(--border);">Bitrix24</div>
+                <div class="tag" style="background:var(--secondary); padding: 12px 20px; border-radius: 8px; border: 1px solid var(--border);">MS Office Pack</div>
+                <div class="tag" style="background:var(--secondary); padding: 12px 20px; border-radius: 8px; border: 1px solid var(--border);">ChatGPT / Gemini</div>
+                <div class="tag" style="background:var(--secondary); padding: 12px 20px; border-radius: 8px; border: 1px solid var(--border);">Web Development</div>
+                <div class="tag" style="background:var(--secondary); padding: 12px 20px; border-radius: 8px; border: 1px solid var(--border);">TG Bots</div>
             </div>
 
             <div class="section-header"><h2>Контакты</h2><div class="section-line"></div></div>
@@ -207,8 +190,6 @@
                 <a href="https://t.me/disvolo" class="contact-item"><div class="contact-icon">✈️</div><div class="contact-text"><strong>Telegram</strong><span>@disvolo</span></div></a>
                 <a href="https://max.ru/u/f9LHodD0cOJlJzwcUFodXStn9kFjvAxWFXmTY2ACRIRWC0fUkYCLgR96o_g" class="contact-item"><div class="contact-icon">📍</div><div class="contact-text"><strong>Max</strong><span>Открыть профиль Max</span></div></a>
                 <a href="mailto:disvolo@bk.ru" class="contact-item"><div class="contact-icon">✉️</div><div class="contact-text"><strong>Email</strong><span>disvolo@bk.ru</span></div></a>
-                <a href="https://vk.com/disvolo" class="contact-item"><div class="contact-icon">VK</div><div class="contact-text"><strong>ВКонтакте</strong><span>vk.com/disvolo</span></div></a>
-                <a href="https://instagram.com/disvolo" class="contact-item"><div class="contact-icon">📷</div><div class="contact-text"><strong>Instagram</strong><span>@disvolo</span></div></a>
             </div>
         </main>
     </div>
